@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mi archivo · Personajes y discografía</title>
+  <meta name="description" content="Archivo personal de personajes, series y discografía idol.">
+  <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="%23fbf8f4"/><rect x="1" y="1" width="62" height="62" rx="13" fill="none" stroke="%23d8c9b8" stroke-width="2"/><text x="32" y="45" font-size="38" text-anchor="middle" fill="%23a8762c" font-family="serif">交</text></svg>'>
+  <link rel="stylesheet" href="css/styles.css?v=7">
+  <link rel="stylesheet" href="css/hp-theme.css?v=7">
+</head>
+<body>
+  <div class="bg-layer" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="topbar" id="topbar">
+    <div class="topbar__inner">
+      <a class="brand" href="#inicio" aria-label="Ir al inicio">
+        <span class="brand__mark" aria-hidden="true">交</span>
+        <span class="brand__text">
+          <span class="brand__title" id="brandTitle">TASOGARE × R.P.G.</span>
+          <span class="brand__sub">ARCHIVO DE HISTORIAS</span>
+        </span>
+      </a>
+
+      <nav class="nav" aria-label="Secciones">
+        <a class="nav__link is-active" href="#inicio">Inicio</a>
+        <a class="nav__link" href="#personajes">Personajes</a>
+        <a class="nav__link" href="#grupo">Going Up</a>
+        <a class="nav__link" href="#discografia">Discografía</a>
+      </nav>
+
+      <div class="tools">
+        <button class="tool" type="button" data-action="settings" title="Ajustes y ayuda" aria-label="Ajustes y ayuda">⚙</button>
+        <button class="tool" type="button" data-action="export" title="Exportar respaldo" aria-label="Exportar respaldo">↓</button>
+        <button class="tool" type="button" data-action="import" title="Importar respaldo" aria-label="Importar respaldo">↑</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="app"></main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <span class="brand__mark brand__mark--sm" aria-hidden="true">交</span>
+        <div>
+          <p class="footer__title" id="footerTitle">TASOGARE × R.P.G.</p>
+          <p class="footer__note">Archivo personal de personajes y discografía. Tus datos se guardan en este navegador.</p>
+        </div>
+      </div>
+      <div class="footer__actions">
+        <button class="btn btn--sm" type="button" data-action="export">Exportar respaldo</button>
+        <button class="btn btn--sm" type="button" data-action="import">Importar respaldo</button>
+        <button class="btn btn--sm btn--danger" type="button" data-action="reset">Restaurar ejemplo</button>
+        <button class="btn btn--sm btn--ghost" type="button" data-action="settings">Ayuda</button>
+      </div>
+    </div>
+    <p class="footer__fine">Hecho para tus historias · ✦ · <span id="footerYear"></span></p>
+  </footer>
+
+  <div id="modalRoot"></div>
+  <div id="toastRoot" class="toast-root" aria-live="polite"></div>
+  <input type="file" id="importInput" accept="application/json,.json" hidden>
+
+  <script src="js/seed.js?v=7"></script>
+  <script src="js/store.js?v=7"></script>
+  <script src="js/app.js?v=7"></script>
+  <script src="js/modals.js?v=7"></script>
+</body>
+</html>
