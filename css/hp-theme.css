@@ -1,0 +1,91 @@
+/* ============================================================
+   TEMA "ficha oficial" · inspirado en las páginas de Hello! Project
+   Blanco limpio, tipografía gótica en negrita, franja de color,
+   cajas planas y datos tipo catálogo. Se carga DESPUÉS de styles.css.
+   ============================================================ */
+:root {
+  --bg: #fff; --bg-2: #f6f6f6; --panel: #fff; --panel-2: #fafafa; --panel-3: #f2f2f2;
+  --line: rgba(0, 0, 0, .13); --line-2: rgba(0, 0, 0, .28);
+  --text: #111; --muted: #444; --muted-2: #6b6b6b;
+  --gold: #d6487a; --rose: #d6487a; --radius: 4px;
+  --serif: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Segoe UI", system-ui, sans-serif;
+  --shadow: 0 10px 30px rgba(0, 0, 0, .14);
+  --stripe: linear-gradient(90deg, #e0527f, #ff9f55, #f2d338, #58b97a, #2f7fc1, #8a63d2);
+}
+.bg-layer, .grain, .hero__bg, .group-banner__watermark { display: none; }
+body { background: #fff; }
+
+/* cabecera */
+.topbar { background: #fff; border-bottom: 1px solid var(--line); backdrop-filter: none; }
+.topbar::before { content: ""; display: block; height: 4px; background: var(--stripe); }
+.topbar__inner { height: 62px; }
+.brand__mark { border-radius: 3px; background: #111; border: 0; color: #fff; }
+.brand__title { font-weight: 800; letter-spacing: .1em; }
+.nav__link { border-radius: 0; font-weight: 700; font-size: .76rem; letter-spacing: .08em; text-transform: uppercase; }
+.nav__link:hover { background: none; color: var(--rose); }
+.nav__link.is-active::after { width: 100%; left: 0; bottom: -2px; transform: none; height: 3px; background: var(--rose); border-radius: 0; }
+.tool { border-radius: 3px; background: #fff; }
+
+/* botones y filtros */
+.btn { border-radius: 3px; font-weight: 700; font-size: .74rem; letter-spacing: .08em; text-transform: uppercase; background: #fff; border: 1px solid #111; }
+.btn:hover { background: #111; color: #fff; transform: none; }
+.btn--primary, .btn--gold { background: var(--rose); border-color: var(--rose); color: #fff; }
+.btn--primary:hover, .btn--gold:hover { background: #111; border-color: #111; }
+.btn--ghost { border-color: var(--line-2); }
+.btn--danger { background: #fff; }
+.chip { border-radius: 2px; font-weight: 700; font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; background: #fff; }
+.chip.is-active { background: #111; border-color: #111; color: #fff; }
+
+/* portada */
+.hero { padding-top: 56px; }
+.hero__title { font-weight: 800; letter-spacing: .04em; }
+.portals { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.portal { border-radius: 3px; background: #fff; border: 1px solid var(--line); border-top: 6px solid var(--accent); box-shadow: none; }
+.portal:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+.marquee { background: #111; color: #fff; border: 0; }
+.stat__value { font-weight: 800; }
+
+/* secciones */
+.section__title { font-weight: 800; letter-spacing: .03em; text-transform: uppercase; padding-bottom: 10px; border-bottom: 3px solid #111; display: inline-block; }
+.eyebrow { font-weight: 800; color: var(--rose); }
+.series-block__title { font-weight: 800; }
+.series-block__head { border-left: 6px solid var(--accent); padding-left: 18px; }
+
+/* tarjetas */
+.char-card, .member-card, .release-card, .edition, .disc, .disc-editor, .panel, .empty {
+  border-radius: 3px; box-shadow: none; background: #fff; border: 1px solid var(--line);
+}
+.char-card:hover, .member-card:hover, .release-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-color: #111; }
+.art { border-radius: 0; }
+.badge, .tag, .rel-chip, .lyric-btn { border-radius: 2px; }
+.char-card__name, .member-card__name, .release-card__title { font-weight: 800; }
+.release-card__date { font-weight: 800; color: var(--text); letter-spacing: .04em; }
+
+/* grupo (Going Up): bloque secundario dentro de R.P.G. */
+.group-banner { border-radius: 3px; background: #fafafa; border: 1px solid var(--line); border-left: 8px solid var(--accent); box-shadow: none; padding: 28px 30px; }
+.group-banner__mark { font-weight: 800; letter-spacing: .06em; }
+.member-card__gen { border-radius: 2px; background: var(--mc); color: #fff; }
+.member-card { border-top: 5px solid var(--mc); }
+
+/* discografía */
+.year { font-weight: 800; font-size: 2.2rem; letter-spacing: .02em; border-bottom: 3px solid #111; padding-bottom: 6px; }
+.year span { font-size: .8rem; color: var(--muted-2); }
+.tracklist li { border-bottom: 1px solid var(--line); }
+.tracklist__no { font-weight: 800; color: var(--rose); }
+.edition__name, .edition__no { font-weight: 800; }
+.disc__type { border-radius: 2px; background: #111; color: #fff; font-weight: 700; }
+
+/* ventanas y pie */
+.modal { border-radius: 4px; }
+.modal__title { font-weight: 800; }
+.footer { background: #111; color: #fff; border: 0; }
+.footer__note, .footer__fine { color: #bbb; }
+.footer .btn { background: transparent; color: #fff; border-color: #777; }
+.footer .btn:hover { background: #fff; color: #111; }
+@media (max-width: 900px) { .portals { grid-template-columns: 1fr; } }
+
+/* recuadro vacío: solo el espacio donde irá la imagen */
+.art--empty { background: color-mix(in srgb, var(--c) 14%, #fff); border: 1px solid var(--line); }
+
+/* nombre en japonés bajo el nombre del personaje */
+.char-card__jp { display: block; margin-top: 2px; font-size: .78rem; color: var(--muted-2); letter-spacing: .06em; }
