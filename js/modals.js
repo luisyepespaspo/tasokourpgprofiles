@@ -1253,6 +1253,8 @@ window.Modals = (function () {
       return;
     }
     resizeImage(file, 900, 0.82).then(function (data) {
+      return window.RemoteAssets ? window.RemoteAssets.toUrl(data) : data;
+    }).then(function (data) {
       if (!modal) return;
       modal.draft.image = data;
       const url = document.querySelector('[data-modal] [name="imageUrl"]');
