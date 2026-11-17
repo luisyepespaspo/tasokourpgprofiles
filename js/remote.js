@@ -27,7 +27,7 @@ function start() {
   document.addEventListener("click", function (e) {
     if (!e.target.closest('[data-action="cloud"]')) return;
     if (user) signOut(auth);
-    else signInWithPopup(auth, new GoogleAuthProvider()).catch(function () { App.toast("No se pudo iniciar sesión"); });
+    else signInWithPopup(auth, new GoogleAuthProvider()).catch(function (e) { console.error(e); App.toast("No se pudo iniciar sesión: " + (e.code || e.message)); });
   });
 
   async function pull(force) {
@@ -57,8 +57,10 @@ function start() {
       for (let i = 0; i < parts.length; i++) await setDoc(doc(fs, "archive", "p" + i), { t: parts[i] });
       lastAt = Date.now();
       await setDoc(doc(fs, "archive", "index"), { n: parts.length, at: lastAt });
+      App.toast("Guardado en la nube ✓");
     } catch (e) {
-      App.toast("No se pudo guardar en la nube. Exporta un respaldo por seguridad.");
+      console.error(e);
+      App.toast("No se pudo guardar: " + (e.code || e.message));
     }
     saving = false;
     if (dirty) push();
@@ -88,7 +90,7 @@ function start() {
   pull(true).then(function (found) {
     pulled = true; remoteEmpty = !found;
     if (user && remoteEmpty) { remoteEmpty = false; push(); }
-  }).catch(function () { App.toast("No se pudo cargar de la nube: se muestra lo guardado en este navegador."); });
+  }).catch(function (e) { console.error(e); App.toast("No se pudo cargar de la nube: " + (e.code || e.message)); });
 
   document.addEventListener("visibilitychange", function () {
     if (document.visibilityState === "visible" && pulled && !timer && !saving && !dirty) pull(false).catch(function () {});
